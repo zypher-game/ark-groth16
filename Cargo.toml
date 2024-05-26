@@ -1,11 +1,11 @@
 [package]
-name = "ark-groth16"
+name = "ark-groth16-zypher"
 version = "0.4.0"
 authors = [ "arkworks contributors" ]
 description = "An implementation of the Groth 2016 zkSNARK proof system"
 homepage = "https://arkworks.rs"
-repository = "https://github.com/arkworks-rs/groth16"
-documentation = "https://docs.rs/ark-groth16/"
+repository = "https://github.com/zypher-game/groth16-zypher"
+documentation = "https://docs.rs/ark-groth16-zypher/"
 keywords = [ "zero-knowledge", "cryptography", "zkSNARK", "SNARK", "Groth-Maller" ]
 categories = [ "cryptography" ]
 include = ["Cargo.toml", "src", "README.md", "LICENSE-APACHE", "LICENSE-MIT"]
@@ -15,14 +15,14 @@ edition = "2021"
 ################################# Dependencies ################################
 
 [dependencies]
-ark-ff = { version = "0.4.0", default-features = false }
-ark-ec = { version = "0.4.0", default-features = false }
-ark-serialize = { version = "0.4.0", default-features = false, features = [ "derive" ] }
-ark-poly = { version = "0.4.0", default-features = false }
-ark-std = { version = "0.4.0", default-features = false }
-ark-relations = { version = "0.4.0", default-features = false }
-ark-crypto-primitives = { version = "0.4.0", default-features = false, features = ["snark", "sponge"] }
-ark-r1cs-std = { version = "0.4.0", default-features = false, optional = true }
+ark-ff = { version = "0.4.0", default-features = false, package = "ark-ff-zypher"  }
+ark-ec = { version = "0.4.0", default-features = false, package = "ark-ec-zypher"  }
+ark-serialize = { version = "0.4.0", default-features = false, features = [ "derive" ], package = "ark-serialize-zypher"  }
+ark-poly = { version = "0.4.0", default-features = false, package = "ark-poly-zypher"  }
+ark-std = { version = "0.4.0", default-features = false, package = "ark-std-zypher"  }
+ark-relations = { version = "0.4.0", default-features = false, package = "ark-relations-zypher"  }
+ark-crypto-primitives = { version = "0.4.0", default-features = false, features = ["snark", "sponge"], package = "ark-crypto-primitives-zypher"  }
+ark-r1cs-std = { version = "0.4.0", default-features = false, optional = true, package = "ark-r1cs-std-zypher"  }
 
 tracing = { version = "0.1", default-features = false, features = [ "attributes" ], optional = true }
 derivative = { version = "2.0", features = ["use_core"], optional = true}
@@ -77,23 +77,3 @@ lto = "thin"
 incremental = true
 debug-assertions = true
 debug = true
-
-
-[patch.crates-io]
-ark-ff = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-ec = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-poly = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-serialize = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-bls12-381 = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-mnt4-298 = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-mnt6-298 = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-mnt4-753 = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-mnt6-753 = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-bls12-377 = { git = "https://github.com/arkworks-rs/algebra/" }
-ark-bw6-761 = { git = "https://github.com/arkworks-rs/algebra/" }
-
-ark-r1cs-std = { git = "https://github.com/arkworks-rs/r1cs-std/" }
-ark-crypto-primitives = { git = "https://github.com/arkworks-rs/crypto-primitives/" }
-
-ark-relations = { git = "https://github.com/arkworks-rs/snark/" }
-ark-snark = { git = "https://github.com/arkworks-rs/snark/" }
